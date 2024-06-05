@@ -38,7 +38,7 @@ router.delete("/:id", async (req, res) =>{
 
 app.use(express.json())
 app.use(router)
-app.listen(3001, () => {
-    console.log("El servidor está en el puerto 3001");
+app.listen(3000, () => {
+    console.log("El servidor está en el puerto 3000");
 })
 dbconnect();
