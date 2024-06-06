@@ -8,6 +8,7 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
     const body = req.body;
+    console.log(req);
     const respuesta = await ModelUser.create(body)
     res.send(respuesta)
 })

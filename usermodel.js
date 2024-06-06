@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema(
             type: String
         },
         edad:{
-            type: String
+            type: Number
         },
         email: {
             type: String
