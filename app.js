@@ -1,10 +1,13 @@
 const { request } = require('express');
+const cors = require('cors');
 const express = require('express');
 const dbconnect = require('./config');
 const ModelUser = require('./usermodel');
 const app = express();
 
 const router = express.Router();
+app.use(cors({ origin: 'https://localhost:4200' }));
+
 
 router.post("/", async (req, res) => {
     const body = req.body;
@@ -39,7 +42,7 @@ router.delete("/:id", async (req, res) =>{
 
 app.use(express.json())
 app.use(router)
-app.listen(3000, () => {
+app.listen(3000,() => {
     console.log("El servidor está en el puerto 3000");
 })
 dbconnect();
