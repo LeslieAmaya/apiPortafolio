@@ -1,8 +1,8 @@
-const User = require("../usermodel");
+const ModelUser = require("../usermodel");
 exports.registerContact = async (req, res) => {
     
     const userData = req.body;
-    const newContact = new User({
+    const newContact = new ModelUser({
         nombre: userData.nombre,
         edad: userData.edad,
         email: userData.email,

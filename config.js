@@ -4,6 +4,7 @@ const dbconnect = () => {
   mongoose.connect("mongodb+srv://UsuarioPrueba:UsuarioPrueba@miprimercluster.rix6jne.mongodb.net/PortafolioWeb", {
     useNewUrlParser: true,
     useUnifiedTopology: true
+
   }, (err, res) => {
     if (!err) {
       console.log("Conexión correcta")
