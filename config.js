@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 const dbconnect = () => {
   mongoose.set('strictQuery', true)
-  mongoose.connect("mongodb://127.0.0.1:27017/PortafolioWeb", {}, (err, res) => {
+  mongoose.connect("mongodb+srv://UsuarioPrueba:UsuarioPrueba@miprimercluster.rix6jne.mongodb.net/PortafolioWeb", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }, (err, res) => {
     if (!err) {
       console.log("Conexión correcta")
     }

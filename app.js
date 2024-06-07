@@ -6,16 +6,27 @@ const ModelUser = require('./usermodel');
 const app = express();
 
 const router = express.Router();
-app.use(cors({ origin: 'https://localhost:4200' }));
+app.use(cors());
 
 
 router.post("/", async (req, res) => {
-    const body = req.body;
-    console.log(req);
-    const respuesta = await ModelUser.create(body)
-    res.send(respuesta)
+    const { nombre, edad, email, opinion } = req.body;
+
+    const newOp = new Op({
+        nombre,
+        edad,
+        email,
+        opinion
+    });
+
+    try {
+        await newOp.save();
+        res.status(201).json(newOp);
+    } catch (error) {
+        res.status(500).json({ message: 'Error al guardar', error });
+    }
 })
-router.get("/", async (req, res)=> {
+/* router.get("/", async (req, res)=> {
     const respuesta = await ModelUser.find({})
     res.send(respuesta)
 })
@@ -26,19 +37,19 @@ router.get("/:id", async (req, res) =>{
     res.send(respuesta);
 })
 
-//Actualizar
+Actualizar
 router.put("/:id", async (req, res) =>{
     const body = req.body;
     const id = req.params.id;
     const respuesta = await ModelUser.findOneAndUpdate({_id:id}, body)
     res.send(respuesta);
 })
-//Delete
+Delete
 router.delete("/:id", async (req, res) =>{
     const id = req.params.id;
     const respuesta = await ModelUser.deleteOne({_id:id})
     res.send(respuesta);
-})
+}) */
 
 app.use(express.json())
 app.use(router)
